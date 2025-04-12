@@ -56,7 +56,7 @@ pre {text-align:center;font-size: 1vw;}
     position: fixed;
     border: thin solid;
     padding: 5px;
-    max-width: 13%;
+    max-width: 10em;
     border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
     animation: 2s rotate linear infinite;
     margin: 10px;
