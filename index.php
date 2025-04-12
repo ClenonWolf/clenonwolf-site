@@ -14,6 +14,7 @@
 <body onload="init()">
 <?php include "snowflakes.php" ?>
 <?php include "headerdiv.php" ?>
+<?php include "audioplayer.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
         <img src="media/gif/construction.gif" class="center">
