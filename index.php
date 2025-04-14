@@ -12,7 +12,6 @@
 </head>
 
 <body onload="init()">
-<?php include "snowflakes.php" ?>
 <?php include "headerdiv.php" ?>
 <?php include "audioplayer.php" ?>
     <?php include "navbar.php" ?>
@@ -62,6 +61,7 @@
             <img src="media/gif/fox-boop.gif" class="img_30">
         </div>
     </div>
+    <?php include "snowflakes.php" ?>
 </body>
 
 </html>
