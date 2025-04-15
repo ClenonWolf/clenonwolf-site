@@ -1,44 +1,7 @@
 <?php
-// This file walks you through the most common features of PHP's SQLite3 API.
-// The code is runnable in its entirety and results in an `analytics.sqlite` file.
 
-
-// Create a new database, if the file doesn't exist and open it for reading/writing.
-// The extension of the file is arbitrary.
 $db = new SQLite3('sqlite/db.sqlite');
-
-// Errors are emitted as warnings by default, enable proper error handling.
 $db->enableExceptions(true);
-
-// Create a table.
-
-
-$db->query('CREATE TABLE IF NOT EXISTS "visits" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    "user_id" INTEGER,
-    "url" VARCHAR,
-    "time" DATETIME
-)');
-
-
-// Insert some sample data.
-//
-// INSERTs may seem very slow in SQLite, which happens when not using transactions.
-// It's advisable to wrap related queries in a transaction (BEGIN and COMMIT),
-// even if you don't care about atomicity.
-// If you don't do this, SQLite automatically wraps every single query
-// in a transaction, which slows everything down immensely.
-
-$db->exec('BEGIN');
-$db->query('INSERT INTO "visits" ("user_id", "url", "time")
-    VALUES (42, "/test", "2017-01-14 10:11:23")');
-$db->query('INSERT INTO "visits" ("user_id", "url", "time")
-    VALUES (42, "/test2", "2017-01-14 10:11:44")');
-$db->exec('COMMIT');
-
-
-// Insert potentially unsafe data with a prepared statement.
-// You can do this with named parameters:
 
 $statement = $db->prepare('INSERT INTO "visits" ("user_id", "url", "time")
     VALUES (:uid, :url, :time)');
