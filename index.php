@@ -28,7 +28,7 @@
         <a href="https://findafox.net"><img src="media/gif/fox-let-me-in.gif" class="img_10"></a>
         <h2>About me and this page</h2>
         <p>Heya, I'm a silly wolf that likes to draw, do random IT/tech/electronics related stuff and has a bunch of hobbies that come and go like photography, music and more. Currently doing an apprenticeship as system integrator. I absolutely love wolves AND FOXES, so just your average furry here heh.</p>
-        <p>This is just me goofing around with good old HTML, CSS, PHP and tiny bit of JS. Inspired by the early 2000s world of GoeCities. Gifs from Internet Archives <a href="https://gifcities.org">GifCities</a>.</p>
+        <p>This is just me goofing around with good old HTML, CSS, PHP and tiny bit of JS. Inspired by the early 2000s internet. Gifs from Internet Archives <a href="https://gifcities.org">GifCities</a>.</p>
         <p>This website really isn't compatible with a lot as I'm not doing things properly. So looks best on a 1080p screen as that's what I'm using :c Will try to improve soon though :p</p>
         <p>Enjoy! uwu</p>
         <p>I know, I found out about rainbow borders and now can't stop using em. No need to tell me, I like em :3</p>
