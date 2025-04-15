@@ -10,7 +10,7 @@
     <script type="text/javascript" src="script.js?t=3"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<!-- git test comment moreeec -->
+<!-- git test comment oreeec -->
 <body onload="init()">
 <?php include "headerdiv.php" ?>
 <?php include "audioplayer.php" ?>
