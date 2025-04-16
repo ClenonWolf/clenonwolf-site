@@ -1,6 +1,6 @@
 <?php
 $token = $_POST["token"]??null;
-if(!$token === file_get_contents("token.secret")) {
+if($token !== file_get_contents("token.secret")) {
     echo "Invalid Passphrase :p";
     http_response_code(403);
     return;
@@ -42,9 +42,9 @@ if(isset($_POST["submit"])) {
       $statement->bindValue(':title', $_POST["title"]);
       $statement->bindValue(':description', $_POST["description"]);
       $result = $statement->execute();
-      echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded.";
-      header("Location: art_upload.php");
-      http_response_code(301);
+      echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded."; 
+      // header("Location: art_upload.php");
+      // http_response_code(301);
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
