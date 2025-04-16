@@ -43,8 +43,8 @@ if(isset($_POST["submit"])) {
       $statement->bindValue(':description', $_POST["description"]);
       $result = $statement->execute();
       echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded."; 
-      // header("Location: art_upload.php");
-      // http_response_code(301);
+      header("Location: art_upload.php");
+      http_response_code(301);
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
