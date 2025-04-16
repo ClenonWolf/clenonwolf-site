@@ -1,6 +1,6 @@
 <?php
 $token = $_POST["token"]??null;
-if($token !== file_get_contents("token.secret")) {
+if($token !== trim(file_get_contents("token.secret"))) {
     echo "Invalid Passphrase :p";
     http_response_code(403);
     return;
