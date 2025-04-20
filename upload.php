@@ -34,6 +34,7 @@ if(isset($_POST["submit"])) {
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+      include "sql_init.php";
       $db = new SQLite3('sqlite/db.sqlite');
       $db->enableExceptions(true);
       $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description) VALUES (:file_name, :file_hash, :title, :description)');

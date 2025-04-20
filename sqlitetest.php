@@ -1,5 +1,6 @@
 <?php
 
+include "sql_init.php";
 $db = new SQLite3('sqlite/db.sqlite');
 $db->enableExceptions(true);
 
