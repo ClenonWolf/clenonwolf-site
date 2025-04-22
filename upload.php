@@ -15,11 +15,8 @@ $thumb_file = $thumb_dir . $file_hash;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-if(!file_exists($target_dir)) {
-  mkdir($target_dir, 0755, true);
-}
-if(!file_exists($thumb_dir)) {
-  mkdir($thumb_dir, 0755, true);
+foreach(array($target_dir, $thumb_dir) as $dir) {
+  mkdir($dir, 0755, true);
 }
 
 if(isset($_POST["submit"])) {

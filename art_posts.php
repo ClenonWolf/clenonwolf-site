@@ -17,6 +17,7 @@
         <div class=imageContainer>
             <?php
             include "sql_init.php";
+            include "regen_thumbs.php";
             $db = new SQLite3('sqlite/db.sqlite');
             $results = $db->query('SELECT * FROM "art_posts"');
             while ($row = $results->fetchArray()) {
