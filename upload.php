@@ -6,14 +6,21 @@ if($token !== trim(file_get_contents("token.secret"))) {
     return;
 }
 
-if(!file_exists('media/uploads')) {
-    mkdir('media/uploads', 0755, true);
-}
+
 $target_dir = "media/uploads/";
+$thumb_dir = "media/uploads/thumbs/";
 $file_hash = md5_file($_FILES["file"]["tmp_name"]);
 $target_file = $target_dir . $file_hash;
+$thumb_file = $thumb_dir . $file_hash;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+if(!file_exists($target_dir)) {
+  mkdir($target_dir, 0755, true);
+}
+if(!file_exists($thumb_dir)) {
+  mkdir($thumb_dir, 0755, true);
+}
 
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["file"]["tmp_name"]);
@@ -34,6 +41,13 @@ if(isset($_POST["submit"])) {
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+      $imagick = new Imagick(realpath($target_file));
+      $imagick->setbackgroundcolor('rgb(64, 64, 64)');
+      $imagick->setImageCompressionQuality(100);
+      $imagick->thumbnailImage(250,250, true, false);
+      if (file_put_contents($thumb_file, $imagick) === false) {
+          throw new Exception("Could not put contents.");
+      }
       include "sql_init.php";
       $db = new SQLite3('sqlite/db.sqlite');
       $db->enableExceptions(true);

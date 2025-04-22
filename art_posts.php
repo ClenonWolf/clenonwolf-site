@@ -15,14 +15,14 @@
     <?php include "navbar.php" ?>
     <div class="centerdiv">
         <div class=imageContainer>
-        <?php
-        include "sql_init.php";
-        $db = new SQLite3('sqlite/db.sqlite');
-        $results = $db->query('SELECT * FROM "art_posts"');
-        while ($row = $results->fetchArray()) {
-            echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}'><img src='media/uploads/{$row['file_hash']}' width=10% ></a>";
-        }
-        ?>
+            <?php
+            include "sql_init.php";
+            $db = new SQLite3('sqlite/db.sqlite');
+            $results = $db->query('SELECT * FROM "art_posts"');
+            while ($row = $results->fetchArray()) {
+                echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}'><img src='media/uploads/{$row['file_hash']}' width=10% ></a>";
+            }
+            ?>
         </div>
     </div>
 </body>
