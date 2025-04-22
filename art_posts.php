@@ -14,30 +14,16 @@
     <?php include "headerdiv.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
+        <div class=imageContainer>
         <?php
         include "sql_init.php";
         $db = new SQLite3('sqlite/db.sqlite');
-        // $post = 1;
-        $statement = $db->prepare('SELECT * FROM "art_posts"'); //WHERE "id" = "post"
-        // //$statement->bindValue(':post', $post);
-        $result = $statement->execute();
-        // $row = $result->fetchArray(SQLITE3_ASSOC);
-        // printr($row);
-        // $result->finalize();
-        $i = 0;
-        while($res = $result->fetchArray(SQLITE3_ASSOC)){
-            if(!isset($res['id'])) continue;
-            $row[$i]['id'] = $res['id'];
-            $row[$i]['file_name'] = $res['file_name'];
-            $row[$i]['file_hash'] = $res['file_hash'];
-            //echo "<img src='media/posts/$res[$i]['file_hash']' width=10%>";
-            $row[$i]['title'] = $res['title'];
-            $row[$i]['description'] = $res['description'];
-            $i++;
+        $results = $db->query('SELECT * FROM "art_posts"');
+        while ($row = $results->fetchArray()) {
+            echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}'><img src='media/uploads/{$row['file_hash']}' width=10% ></a>";
         }
-        print_r($row);
-        
         ?>
+        </div>
     </div>
 </body>
 
