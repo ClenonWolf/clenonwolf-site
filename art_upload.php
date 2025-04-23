@@ -23,10 +23,10 @@
             <br><br>
             <input type="text" name="title" placeholder="Title" size="30" style="">
             <br>
-            <!-- <input type="text" name="description" placeholder="Description"> -->
             <textarea type="text" name="description" placeholder="Description"></textarea>
             <br>
-            <input type="date" name="upload_date">
+            <label for="upload_date">Creation date:</label>
+            <input type="date" name="creation_date">
             <br>
             <input type="submit" value="Upload Image" name="submit">
         </form>

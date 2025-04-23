@@ -53,7 +53,7 @@ if(isset($_POST["submit"])) {
       $statement->bindValue(':file_hash', $file_hash);
       $statement->bindValue(':title', $_POST["title"]);
       $statement->bindValue(':description', $_POST["description"]);
-      $statement->bindValue(':creation_date', $_POST["upload_date"]);
+      $statement->bindValue(':creation_date', $_POST["creation_date"]);
       $statement->bindValue(':upload_date', date('Y-m-d H:i:s'));
       $result = $statement->execute();
       echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded."; 
