@@ -6,7 +6,7 @@ if($token !== trim(file_get_contents("token.secret"))) {
     return;
 }
 
-
+date_default_timezone_set('Europe/Berlin');
 $target_dir = "media/uploads/";
 $thumb_dir = "media/uploads/thumbs/";
 $file_hash = md5_file($_FILES["file"]["tmp_name"]);
@@ -48,11 +48,13 @@ if(isset($_POST["submit"])) {
       include "sql_init.php";
       $db = new SQLite3('sqlite/db.sqlite');
       $db->enableExceptions(true);
-      $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description) VALUES (:file_name, :file_hash, :title, :description)');
+      $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description, creation_date, upload_date) VALUES (:file_name, :file_hash, :title, :description, :creation_date, :upload_date)');
       $statement->bindValue(':file_name', $_FILES["file"]["name"]);
       $statement->bindValue(':file_hash', $file_hash);
       $statement->bindValue(':title', $_POST["title"]);
       $statement->bindValue(':description', $_POST["description"]);
+      $statement->bindValue(':creation_date', $_POST["upload_date"]);
+      $statement->bindValue(':upload_date', date('Y-m-d H:i:s'));
       $result = $statement->execute();
       echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded."; 
       header("Location: art_upload.php");

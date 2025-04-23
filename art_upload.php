@@ -26,6 +26,8 @@
             <!-- <input type="text" name="description" placeholder="Description"> -->
             <textarea type="text" name="description" placeholder="Description"></textarea>
             <br>
+            <input type="date" name="upload_date">
+            <br>
             <input type="submit" value="Upload Image" name="submit">
         </form>
     </div>

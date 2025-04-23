@@ -19,7 +19,8 @@ if(!file_exists('sqlite/db.sqlite')) {
         "file_name" VARCHAR(255),
         "file_hash" VARCHAR,
         "title" VARCHAR(255),
-        "upload_date" DATETIME DEFAULT CURRENT_TIMESTAMP,
+        "upload_date" DATETIME,
+        "creation_date" DATE,
         "description" TEXT
     )');
 }
