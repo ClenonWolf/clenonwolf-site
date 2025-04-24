@@ -19,27 +19,38 @@
         <form action="art_posts.php" method="post">
             <label for="sortby">Sort by:</label>
             <select onchange="this.form.submit();" name="sortby">
-                <option value='SELECT * FROM art_posts ORDER BY id DESC'>ID Descending</option>
-                <option value='SELECT * FROM art_posts ORDER BY id ASC'>ID Ascending</option>
-                <option value='SELECT * FROM art_posts ORDER BY creation_date ASC'>Creation Date Ascending</option>
-                <option value='SELECT * FROM art_posts ORDER BY creation_date DESC'>Creation Date Descending</option>
-                <option value='SELECT * FROM art_posts ORDER BY upload_date ASC' >Upload Date Ascending</option>
-                <option value='SELECT * FROM art_posts ORDER BY upload_date DESC'>Upload Date Descending</option>
+                <option <?php if ($_POST["sortby"] == "id_desc") echo 'selected="selected"' ?> value="id_desc">ID Descending</option>
+                <option <?php if ($_POST["sortby"] == "id_asc") echo 'selected="selected"' ?> value="id_asc">ID Ascending</option>
+                <option <?php if ($_POST["sortby"] == "creation_date_desc") echo 'selected="selected"' ?> value="creation_date_desc">Creation Date Descending</option>
+                <option <?php if ($_POST["sortby"] == "creation_date_asc") echo 'selected="selected"' ?> value="creation_date_asc">Creation Date Ascending</option>
+                <option <?php if ($_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
+                <option <?php if ($_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
             </select>
         </form>
+        <br>
         <div class=imageContainer>
             <?php
+            $order_options = array(
+                "id_desc"=>'SELECT * FROM art_posts ORDER BY id DESC',
+                "id_asc"=>'SELECT * FROM art_posts ORDER BY id ASC',
+                "creation_date_desc"=>'SELECT * FROM art_posts ORDER BY creation_date DESC',
+                "creation_date_asc"=>'SELECT * FROM art_posts ORDER BY creation_date ASC',
+                "upload_date_desc"=>'SELECT * FROM art_posts ORDER BY upload_date DESC',
+                "upload_date_asc"=>'SELECT * FROM art_posts ORDER BY upload_date ASC'
+            );
+
             include "sql_init.php";
             include "regen_thumbs.php";
             if(isset($_POST["sortby"])) {
-                $sql = $_POST["sortby"];
+                $sql = $order_options[$_POST["sortby"]];
             } else {
-                $sql = 'SELECT * FROM art_posts ORDER BY id DESC';
+                $sql = $order_options["id_desc"];
             }
             $db = new SQLite3('sqlite/db.sqlite');
             $results = $db->query($sql);
             while ($row = $results->fetchArray()) {
-                echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}/{$row['file_name']}'><img src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
+                $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
+                echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}/{$row['file_name']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
             }
             ?>
         </div>
