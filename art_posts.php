@@ -16,6 +16,7 @@
     <div class="centerdiv">
         <p>Testing page for viewing posts I've uploaded through my posting system. Posts are read from the sqlite db and each loaded.</p>
         <p>Different ways to sort and proper post views with post information coming soon :3</p>
+        <p>Click to view post details</p>
         <form action="art_posts.php" method="post">
             <label for="sortby">Sort by:</label>
             <select onchange="this.form.submit();" name="sortby">
@@ -50,7 +51,7 @@
             $results = $db->query($sql);
             while ($row = $results->fetchArray()) {
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
-                echo "<a style='padding:7px' target='_blank' href='media/uploads/{$row['file_hash']}/{$row['file_name']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
+                echo "<a target='_self' style='padding:7px' target='_blank' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
             }
             ?>
         </div>
