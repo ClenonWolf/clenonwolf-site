@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="style.css" type="text/css">
     <title>My page :3</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
