@@ -26,13 +26,7 @@
             return;
         }
         echo "
-        <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
-        <h4>Title: {$post["title"]}</h4>
-        <p> Description: {$post["description"]}</p>
-        <p>Created: {$post['creation_date']}</p>
-        <p>Uploaded: {$post['upload_date']}</p>
-        <button type='button' href='post_edit.php?id={$post['id']}'>Edit</button>
-        ";
+        <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>";
         ?>
     </div>
 </body>
