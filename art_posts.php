@@ -28,28 +28,27 @@
                 <option <?php if ($_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
                 <option <?php if ($_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
             </select>
+
         </form>
         <br>
         <div class=imageContainer>
             <?php
             $order_options = array(
-                "id_desc"=>'SELECT * FROM art_posts ORDER BY id DESC',
-                "id_asc"=>'SELECT * FROM art_posts ORDER BY id ASC',
-                "creation_date_desc"=>'SELECT * FROM art_posts ORDER BY creation_date DESC',
-                "creation_date_asc"=>'SELECT * FROM art_posts ORDER BY creation_date ASC',
-                "upload_date_desc"=>'SELECT * FROM art_posts ORDER BY upload_date DESC',
-                "upload_date_asc"=>'SELECT * FROM art_posts ORDER BY upload_date ASC'
+                "id_desc"=>'id DESC',
+                "id_asc"=>'id ASC',
+                "creation_date_desc"=>'creation_date DESC',
+                "creation_date_asc"=>'creation_date ASC',
+                "upload_date_desc"=>'upload_date DESC',
+                "upload_date_asc"=>'upload_date ASC'
             );
-
             include "sql_init.php";
             include "regen_thumbs.php";
-            if(isset($_POST["sortby"])) {
-                $sql = $order_options[$_POST["sortby"]];
-            } else {
-                $sql = $order_options["id_desc"];
+            if(!isset($_POST["sortby"])) {
+                $_POST["sortby"] = 'id_desc';
             }
             $db = new SQLite3('sqlite/db.sqlite');
-            $results = $db->query($sql);
+            $statement = $db->prepare('SELECT * FROM art_posts ORDER BY '. $order_options[$_POST["sortby"]].'');
+            $results = $statement->execute();
             while ($row = $results->fetchArray()) {
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
                 echo "<a target='_self' style='padding:7px' target='_blank' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
