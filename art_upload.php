@@ -26,7 +26,7 @@
             <br>
             <textarea type="text" name="description" placeholder="Description"></textarea>
             <br>
-            <label for="upload_date">Creation date:</label>
+            <label for="creation_date">Creation date:</label>
             <input type="date" name="creation_date">
             <br>
             <input type="submit" value="Upload Image" name="submit">

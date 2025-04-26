@@ -21,12 +21,12 @@
         <form action="art_posts.php" method="post">
             <label for="sortby">Sort by:</label>
             <select onchange="this.form.submit();" name="sortby">
-                <option <?php if ($_POST["sortby"] == "id_desc") echo 'selected="selected"' ?> value="id_desc">ID Descending</option>
-                <option <?php if ($_POST["sortby"] == "id_asc") echo 'selected="selected"' ?> value="id_asc">ID Ascending</option>
-                <option <?php if ($_POST["sortby"] == "creation_date_desc") echo 'selected="selected"' ?> value="creation_date_desc">Creation Date Descending</option>
-                <option <?php if ($_POST["sortby"] == "creation_date_asc") echo 'selected="selected"' ?> value="creation_date_asc">Creation Date Ascending</option>
-                <option <?php if ($_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
-                <option <?php if ($_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_desc") echo 'selected="selected"' ?> value="id_desc">ID Descending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_asc") echo 'selected="selected"' ?> value="id_asc">ID Ascending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "creation_date_desc") echo 'selected="selected"' ?> value="creation_date_desc">Creation Date Descending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "creation_date_asc") echo 'selected="selected"' ?> value="creation_date_asc">Creation Date Ascending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
             </select>
 
         </form>

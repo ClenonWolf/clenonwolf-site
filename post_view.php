@@ -31,9 +31,9 @@
         <p> Description: {$post["description"]}</p>
         <p>Created: {$post['creation_date']}</p>
         <p>Uploaded: {$post['upload_date']}</p>
-        <button type='button' href='post_edit.php?id={$post['id']}'>Edit</button>
         ";
         ?>
+        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
     </div>
 </body>
 

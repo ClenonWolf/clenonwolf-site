@@ -26,8 +26,22 @@
             return;
         }
         echo "
-        <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>";
+        <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
+        <form action='edit.php?id={$_GET["id"]}'' method='post' enctype='multipart/form-data'>
+            <input type='password' name='token' placeholder='Passphrase'>
+            <br><br>
+            <input type='text' name='title' placeholder='Title' size='30' style='' value='{$post['title']}'>
+            <br>
+            <textarea type='text' name='description' placeholder='Description'>{$post['description']}</textarea>
+            <br>
+            <label for='upload_date'>Creation date:</label>
+            <input type='date' name='creation_date' value='{$post['creation_date']}'>
+            <br>
+            <input type='submit' value='Update Post' name='submit'>
+        </form>
+        ";
         ?>
+
     </div>
 </body>
 
