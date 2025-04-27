@@ -47,7 +47,7 @@
                 $_POST["sortby"] = 'id_desc';
             }
             $db = new SQLite3('sqlite/db.sqlite');
-            $statement = $db->prepare('SELECT * FROM art_posts ORDER BY '. $order_options[$_POST["sortby"]].'');
+            $statement = $db->prepare('SELECT * FROM art_posts WHERE hidden=0 ORDER BY '. $order_options[$_POST["sortby"]].'');
             $results = $statement->execute();
             while ($row = $results->fetchArray()) {
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";

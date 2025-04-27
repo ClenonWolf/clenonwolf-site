@@ -28,6 +28,10 @@
             <br>
             <label for="creation_date">Creation date:</label>
             <input type="date" name="creation_date">
+            <br><br>
+            <input type='checkbox' name='hidden' value='1'>Hidden</input>
+            <br>
+            <input type='checkbox' name='nsfw' value='1'>NSFW</input>
             <br>
             <input type="submit" value="Upload Image" name="submit">
         </form>

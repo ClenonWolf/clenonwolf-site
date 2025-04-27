@@ -36,10 +36,14 @@ if(isset($_POST["submit"])) {
     include "sql_init.php";
     $db = new SQLite3('sqlite/db.sqlite');
     $db->enableExceptions(true);
-    $statement = $db->prepare('UPDATE "art_posts" SET title=:title, description=:description, creation_date=:creation_date WHERE id=:id');
+    $statement = $db->prepare('UPDATE "art_posts" SET title=:title, description=:description, creation_date=:creation_date, hidden=:hidden, nsfw=:nsfw WHERE id=:id');
     $statement->bindValue(':title', $_POST["title"]);
     $statement->bindValue(':description', $_POST["description"]);
     $statement->bindValue(':creation_date', $_POST["creation_date"]);
+    $hidden = $_POST["hidden"] ?? 0;
+    $statement->bindValue(':hidden', $hidden);
+    $nsfw = $_POST["nsfw"] ?? 0;
+    $statement->bindValue(':nsfw', $nsfw);
     $statement->bindValue(':id', $_GET["id"]);
     $result = $statement->execute(); 
     header("Location: post_view.php?id={$_GET["id"]}");

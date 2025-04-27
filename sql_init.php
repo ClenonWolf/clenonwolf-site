@@ -21,7 +21,9 @@ if(!file_exists('sqlite/db.sqlite')) {
         "title" VARCHAR(255),
         "upload_date" DATETIME,
         "creation_date" DATE,
-        "description" TEXT
+        "description" TEXT,
+        "hidden" BOOLEAN,
+        "nsfw" BOOLEAN
     )');
 }
 ?>

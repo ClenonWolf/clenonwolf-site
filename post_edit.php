@@ -25,6 +25,10 @@
             echo "Invalid Post ID";
             return;
         }
+        $hidden = '';
+        $nsfw = '';
+        if($post['hidden'] == 1) {$hidden = 'checked';}
+        if($post['nsfw'] == 1) {$nsfw = 'checked';}
         echo "
         <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
         <form action='edit.php?id={$_GET["id"]}'' method='post' enctype='multipart/form-data'>
@@ -36,9 +40,12 @@
             <br>
             <label for='upload_date'>Creation date:</label>
             <input type='date' name='creation_date' value='{$post['creation_date']}'>
+            <br><br>
+            <input {$hidden} type='checkbox' name='hidden' value='1'>Hidden</input>
             <br>
+            <input {$nsfw} type='checkbox' name='nsfw' value='1'>NSFW</input>
+            <br><br>
             <input type='submit' value='Update Post' name='submit'>
-            <!-- <input style='color: red;'type='submit' value='Hide' name='hide'> -->
             <br><br>
             <input style='color: red;'type='submit' value='Delete' name='delete'>
         </form>

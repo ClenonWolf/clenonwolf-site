@@ -25,6 +25,14 @@
             echo "Invalid Post ID";
             return;
         }
+        ?>
+        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
+        <br>
+        <?php
+        if($post["hidden"] == 1) {
+            echo "Post is hidden";
+            return;
+        }
         echo "
         <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
         <h4>Title: {$post["title"]}</h4>
@@ -33,7 +41,6 @@
         <p>Uploaded: {$post['upload_date']}</p>
         ";
         ?>
-        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
     </div>
 </body>
 

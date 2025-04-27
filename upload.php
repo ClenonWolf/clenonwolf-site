@@ -48,12 +48,16 @@ if(isset($_POST["submit"])) {
       include "sql_init.php";
       $db = new SQLite3('sqlite/db.sqlite');
       $db->enableExceptions(true);
-      $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description, creation_date, upload_date) VALUES (:file_name, :file_hash, :title, :description, :creation_date, :upload_date)');
+      $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description, creation_date, hidden, nsfw, upload_date) VALUES (:file_name, :file_hash, :title, :description, :creation_date, :hidden, :nsfw, :upload_date)');
       $statement->bindValue(':file_name', $_FILES["file"]["name"]);
       $statement->bindValue(':file_hash', $file_hash);
       $statement->bindValue(':title', $_POST["title"]);
       $statement->bindValue(':description', $_POST["description"]);
       $statement->bindValue(':creation_date', $_POST["creation_date"]);
+      $hidden = $_POST["hidden"] ?? 0;
+      $statement->bindValue(':hidden', $hidden);
+      $nsfw = $_POST["nsfw"] ?? 0;
+      $statement->bindValue(':nsfw', $nsfw);
       $statement->bindValue(':upload_date', date('Y-m-d H:i:s'));
       $result = $statement->execute();
       echo "The file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " has been uploaded."; 
