@@ -38,6 +38,9 @@
             <input type='date' name='creation_date' value='{$post['creation_date']}'>
             <br>
             <input type='submit' value='Update Post' name='submit'>
+            <!-- <input style='color: red;'type='submit' value='Hide' name='hide'> -->
+            <br><br>
+            <input style='color: red;'type='submit' value='Delete' name='delete'>
         </form>
         ";
         ?>
