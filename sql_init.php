@@ -22,8 +22,8 @@ if(!file_exists('sqlite/db.sqlite')) {
         "upload_date" DATETIME,
         "creation_date" DATE,
         "description" TEXT,
-        "hidden" INTEGER,
-        "nsfw" INTEGER
+        "hidden" INTEGER DEFAULT 0,
+        "nsfw" INTEGER DEFAULT 0
     )');
 }
 ?>
