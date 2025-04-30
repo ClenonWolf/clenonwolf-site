@@ -37,14 +37,12 @@
             <p>Uploaded: {$post['upload_date']}</p>
             ";
         }
-        ?>
-        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
-        <?php
         if($post["hidden"] == 1) {
             echo "Post is hidden";
             return;
         }
         ?>
+        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
     </div>
 </body>
 
