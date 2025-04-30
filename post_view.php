@@ -26,20 +26,24 @@
             return;
         }
         ?>
-        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
         <br>
+        <?php
+        if($post["hidden"] == 0) {
+            echo "
+            <a target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
+            <h4>Title: {$post["title"]}</h4>
+            <p> Description: {$post["description"]}</p>
+            <p>Created: {$post['creation_date']}</p>
+            <p>Uploaded: {$post['upload_date']}</p>
+            ";
+        }
+        ?>
+        <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>
         <?php
         if($post["hidden"] == 1) {
             echo "Post is hidden";
             return;
         }
-        echo "
-        <a style='padding:7px' target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
-        <h4>Title: {$post["title"]}</h4>
-        <p> Description: {$post["description"]}</p>
-        <p>Created: {$post['creation_date']}</p>
-        <p>Uploaded: {$post['upload_date']}</p>
-        ";
         ?>
     </div>
 </body>

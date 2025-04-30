@@ -28,7 +28,19 @@
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
             </select>
-
+            <!-- php
+            if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] === "on") {
+                setcookie("nsfw", "on", time()+60*60*24*30);
+                $_COOKIE["nsfw"] = $_POST["nsfw_toggle"];
+            } elseif ($_POST["nsfw"] === "") {setcookie("nsfw", "");}
+            $nsfw_enabled = isset($_COOKIE["nsfw"]) ? $_COOKIE["nsfw"] === "on" : false;
+            ?> -->
+            <!-- <select onchange="this.form.submit();" name="nsfw_toggle">
+                <option php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] == "AND nsfw=0") echo 'selected="selected"' ?> value="AND nsfw=0">NSFW (18+) hidden</option>
+                <option php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] == "") echo 'selected="selected"' ?> value="">NSFW (18+) shown</option>
+            </select> -->
+            <input <?php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"]) echo 'checked' ?> onchange="this.form.submit();" type="checkbox" name="nsfw_toggle">Show NSFW (18+) Posts</input>
+            <!-- <input type="submit" value="Apply" name="submit"> -->
         </form>
         <br>
         <div class=imageContainer>
@@ -43,11 +55,13 @@
             );
             include "sql_init.php";
             include "regen_thumbs.php";
-            if(!isset($_POST["sortby"])) {
-                $_POST["sortby"] = 'id_desc';
-            }
+            
+            $_POST["sortby"] = !isset($_POST["sortby"]) ? 'id_desc' : $_POST["sortby"];
+            // $_POST["nsfw_toggle"] = !isset($_POST["nsfw_toggle"]) ? 'AND nsfw=0' : $_POST["nsfw_toggle"];
+            $nsfw_toggle = $_POST["nsfw_toggle"] ? '' : 'AND nsfw=0';
+
             $db = new SQLite3('sqlite/db.sqlite');
-            $statement = $db->prepare('SELECT * FROM art_posts WHERE hidden=0 ORDER BY '. $order_options[$_POST["sortby"]].'');
+            $statement = $db->prepare('SELECT * FROM art_posts WHERE hidden=0 '. $nsfw_toggle .' ORDER BY '. $order_options[$_POST["sortby"]].'');
             $results = $statement->execute();
             while ($row = $results->fetchArray()) {
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
