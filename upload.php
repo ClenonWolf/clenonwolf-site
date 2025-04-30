@@ -1,7 +1,7 @@
 <?php
+if ($_POST["token"] != '') {setcookie("token", $_POST["token"]);}
 $token = $_COOKIE["token"]??$_POST["token"];
 //this part suckssssssssssssssss
-if ($_POST["token"] != '') {setcookie("token", $token);}
 echo $token; 
 if($token !== trim(file_get_contents("token.secret"))) {
     echo "Invalid Passphrase :p";
