@@ -1,7 +1,6 @@
 <?php
-$token = $_POST["token"]??null;
-if($token !== trim(file_get_contents("token.secret"))) {
-    echo "Invalid Passphrase :p";
+if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
+    echo "Not logged in";
     http_response_code(403);
     return;
 }

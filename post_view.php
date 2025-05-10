@@ -36,10 +36,20 @@
             <p>Created: {$post['creation_date']}</p>
             <p>Uploaded: {$post['upload_date']}</p>
             ";
-        }
-        if($post["hidden"] == 1) {
-            echo "Post is hidden";
-            return;
+        } else {
+            if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
+                echo "Post is hidden";
+                http_response_code(403);
+                return;
+            }
+            //this is done in a dumb way but might just work :shrug:
+            echo "
+            <a target='_blank' href='media/uploads/{$post['file_hash']}/{$post['file_name']}'><img src='media/uploads/{$post['file_hash']}/{$post['file_name']}'></a>
+            <h4>Title: {$post["title"]}</h4>
+            <p> Description: {$post["description"]}</p>
+            <p>Created: {$post['creation_date']}</p>
+            <p>Uploaded: {$post['upload_date']}</p>
+            ";
         }
         ?>
         <button onclick="location.href='post_edit.php?id=<?php echo $post["id"] ?>'" type='button'>Edit</button>

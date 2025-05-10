@@ -16,9 +16,9 @@
     <?php include "navbar.php" ?>
     <?php include "audioplayer.php" ?>
     <div class="centerdiv">
-    <h1>Have some of the wolps art :3</h1>
-    <p>This page is very much a work in progress. Just got thumbnails to work and will try to improve this page. Wolp be new to php xp</p>
-    <p>To view the full res image, simply click one and it'll open in a new tab. :3</p>
+    <h1>Art Dump :3</h1>
+    <p>The lazy dump of the wolps art. Just a folder I can throw everything into.</p>
+    <p>To view the full res image, simply click one and it'll open in a new tab.</p>
     <div class=imageContainer>
       <?php
         $ignored = array('.', '..', '.svn', '.htaccess', '.directory', 'thumb');

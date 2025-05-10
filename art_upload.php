@@ -16,9 +16,9 @@
     <?php include "navbar.php" ?>
     <div class="centerdiv">
         <form action="upload.php" method="post" enctype="multipart/form-data">
-            <h2>Authentification</h2>
+            <!-- <h2>Authentification</h2>
             <input type="password" name="token" placeholder="Passphrase">
-            <br><br>
+            <br><br> -->
             <h2>Post</h2>
             <input type="file" name="file">
             <br><br>

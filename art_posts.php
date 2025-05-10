@@ -15,9 +15,17 @@
     <?php include "headerdiv.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
-        <p>Testing page for viewing posts I've uploaded through my posting system. Posts are read from the sqlite db and each loaded.</p>
-        <p>Different ways to sort and proper post views with post information coming soon :3</p>
-        <p>Click to view post details</p>
+        <h2>Have the wolps art :3</h2>
+        <p>Page for viewing posts I've uploaded through my posting system. For moar art visit my <a href="art.php">Art Dump</a> which is the stuff I'm too lazy to properly post.</p>
+        <p>Click to view post details :p</p>
+        <h3>For admin wolp:</h3>
+        <button onclick="location.href='art_upload.php'" type='button'>Upload</button><button onclick="location.href='show_hidden.php'" type='button'>Show hidden</button>
+        <form action="login.php?source=art_posts.php" method="post" enctype="multipart/form-data">
+            <input type="password" name="token" placeholder="Passphrase">
+            <input type="submit" value="Login" name="submit">
+        </form>
+        <button onclick="location.href='logout.php'" type='button'>Logout</button>
+        <h3>Here's yours to play with:</h3>
         <form action="art_posts.php" method="post">
             <label for="sortby">Sort by:</label>
             <select onchange="this.form.submit();" name="sortby">
@@ -28,19 +36,7 @@
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
             </select>
-            <!-- php
-            if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] === "on") {
-                setcookie("nsfw", "on", time()+60*60*24*30);
-                $_COOKIE["nsfw"] = $_POST["nsfw_toggle"];
-            } elseif ($_POST["nsfw"] === "") {setcookie("nsfw", "");}
-            $nsfw_enabled = isset($_COOKIE["nsfw"]) ? $_COOKIE["nsfw"] === "on" : false;
-            ?> -->
-            <!-- <select onchange="this.form.submit();" name="nsfw_toggle">
-                <option php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] == "AND nsfw=0") echo 'selected="selected"' ?> value="AND nsfw=0">NSFW (18+) hidden</option>
-                <option php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"] == "") echo 'selected="selected"' ?> value="">NSFW (18+) shown</option>
-            </select> -->
             <input <?php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"]) echo 'checked' ?> onchange="this.form.submit();" type="checkbox" name="nsfw_toggle">Show NSFW (18+) Posts</input>
-            <!-- <input type="submit" value="Apply" name="submit"> -->
         </form>
         <br>
         <div class=imageContainer>
@@ -57,7 +53,6 @@
             include "regen_thumbs.php";
             
             $_POST["sortby"] = !isset($_POST["sortby"]) ? 'id_desc' : $_POST["sortby"];
-            // $_POST["nsfw_toggle"] = !isset($_POST["nsfw_toggle"]) ? 'AND nsfw=0' : $_POST["nsfw_toggle"];
             $nsfw_toggle = $_POST["nsfw_toggle"] ? '' : 'AND nsfw=0';
 
             $db = new SQLite3('sqlite/db.sqlite');

@@ -1,10 +1,6 @@
 <?php
-if ($_POST["token"] != '') {setcookie("token", $_POST["token"]);}
-$token = $_COOKIE["token"]??$_POST["token"];
-//this part suckssssssssssssssss
-echo $token; 
-if($token !== trim(file_get_contents("token.secret"))) {
-    echo "Invalid Passphrase :p";
+if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
+    echo "Not logged in";
     http_response_code(403);
     return;
 }
