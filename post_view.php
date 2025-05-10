@@ -15,6 +15,7 @@
     <?php include "headerdiv.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
+        <h2>View Post</h2>
         <?php
         $db = new SQLite3('sqlite/db.sqlite');
         $statement = $db->prepare('SELECT * FROM art_posts WHERE id=:id');

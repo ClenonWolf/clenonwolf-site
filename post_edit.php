@@ -15,6 +15,7 @@
     <?php include "headerdiv.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
+        <h2>Edit Post</h2>
         <?php
         if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
             echo "Not logged in";
