@@ -15,8 +15,8 @@
     <?php include "headerdiv.php" ?>
     <?php include "navbar.php" ?>
     <div class="centerdiv">
-        <p>Hidden x3</p>
-        <p>Silly you, really thought I'd just how them like this xp</p>
+        <h2>View Hidden Posts</h2>
+        <p>Silly you, really thought I'd just show them like this xp</p>
         <div class=imageContainer>
             <?php
             if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
