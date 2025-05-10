@@ -29,12 +29,12 @@
         <form action="art_posts.php" method="post">
             <label for="sortby">Sort by:</label>
             <select onchange="this.form.submit();" name="sortby">
-                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_desc") echo 'selected="selected"' ?> value="id_desc">ID Descending</option>
-                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_asc") echo 'selected="selected"' ?> value="id_asc">ID Ascending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "creation_date_desc") echo 'selected="selected"' ?> value="creation_date_desc">Creation Date Descending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "creation_date_asc") echo 'selected="selected"' ?> value="creation_date_asc">Creation Date Ascending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_desc") echo 'selected="selected"' ?> value="upload_date_desc">Upload Date Descending</option>
                 <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "upload_date_asc") echo 'selected="selected"' ?> value="upload_date_asc">Upload Date Ascending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_desc") echo 'selected="selected"' ?> value="id_desc">ID Descending</option>
+                <option <?php if (isset($_POST["sortby"]) and $_POST["sortby"] == "id_asc") echo 'selected="selected"' ?> value="id_asc">ID Ascending</option>
             </select>
             <input <?php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"]) echo 'checked' ?> onchange="this.form.submit();" type="checkbox" name="nsfw_toggle">Show NSFW (18+) Posts</input>
         </form>
@@ -52,7 +52,7 @@
             include "sql_init.php";
             include "regen_thumbs.php";
             
-            $_POST["sortby"] = !isset($_POST["sortby"]) ? 'id_desc' : $_POST["sortby"];
+            $_POST["sortby"] = !isset($_POST["sortby"]) ? 'creation_date_desc' : $_POST["sortby"];
             $nsfw_toggle = $_POST["nsfw_toggle"] ? '' : 'AND nsfw=0';
 
             $db = new SQLite3('sqlite/db.sqlite');
