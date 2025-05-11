@@ -1,4 +1,4 @@
-function init() {
+function index_init() {
     getWeather('Aachen', update_temp)
     var timer = setInterval(function () {getWeather('Aachen', update_temp)}, 30000);
 }
@@ -22,4 +22,20 @@ function update_temp(value) {
   if(document.getElementById("temp")) {
     document.getElementById("temp").innerHTML = string_val;
   }
+}
+
+function distributeFiles() {
+    const self = document.getElementById("multiFileInput");
+    const files = self.files;
+    const fileInputs = document.querySelectorAll("#upload_form input[type='file']")
+    let fileIndex = 0;
+
+    for (let i = 0; i < fileInputs.length && fileIndex < files.length;) {
+        const dt = new DataTransfer();
+        dt.items.add(files[fileIndex]);
+        fileInputs[i].files = dt.files;
+        console.log(fileInputs[i]);
+        fileIndex++;
+        i++;
+    }
 }

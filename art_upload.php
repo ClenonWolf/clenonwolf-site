@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="style.css" type="text/css">
     <title>My page :3</title>
+    <script type="text/javascript" src="script.js?t=3"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -23,27 +24,30 @@
             return;
         }
         echo "
-            <form action='upload.php' method='post' enctype='multipart/form-data'>
-                <!-- <h2>Authentification</h2>
-                <input type='password' name='token' placeholder='Passphrase'>
-                <br><br> -->
-                <h2>Post</h2>
-                <input type='file' name='file'>
-                <br><br>
-                <input type='text' name='title' placeholder='Title' size='30' style=''>
+        <h2>Post</h2>
+        <label for='files'>Select multiple files:</label>
+        <input onchange='distributeFiles();' type='file' id='multiFileInput' name='files' multiple />
+        <br><br>
+        ";
+        for($i = 0; $i <= 9; $i++) {    
+            echo "
+            <form action='upload.php' id='upload_form' method='post' enctype='multipart/form-data'>
+                <label for='file{$i}'>{$i}</label>
+                <input type='file' name='file{$i}'>
+                <input type='text' name='title{$i}' placeholder='Title' size='30'>
+                <textarea name='description{$i}' placeholder='Description' rows='1' cols='40'></textarea>
+                <label for='creation_date{$i}'>Creation date:</label>
+                <input type='date' name='creation_date{$i}'>
+                <input type='checkbox' name='hidden{$i}' value='1'>Hidden</input>
+                <input type='checkbox' name='nsfw{$i}' value='1'>NSFW</input>
                 <br>
-                <textarea type='text' name='description' placeholder='Description'></textarea>
-                <br>
-                <label for='creation_date'>Creation date:</label>
-                <input type='date' name='creation_date'>
-                <br><br>
-                <input type='checkbox' name='hidden' value='1'>Hidden</input>
-                <br>
-                <input type='checkbox' name='nsfw' value='1'>NSFW</input>
+            ";
+        }
+        echo "
                 <br>
                 <input type='submit' value='Upload Image' name='submit'>
             </form>
-        "
+        ";
         ?>
     </div>
 </body>

@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <!-- git test comment offreeec -->
-<body onload="init()">
+<body onload="index_init()">
 <?php include "headerdiv.php" ?>
 <?php include "audioplayer.php" ?>
     <?php include "navbar.php" ?>
