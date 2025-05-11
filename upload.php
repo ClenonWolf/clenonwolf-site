@@ -55,7 +55,7 @@ foreach($_FILES as $file){
                 $db = new SQLite3('sqlite/db.sqlite');
                 $db->enableExceptions(true);
                 $statement = $db->prepare('INSERT INTO "art_posts" (file_name, file_hash, title, description, creation_date, hidden, nsfw, upload_date) VALUES (:file_name, :file_hash, :title, :description, :creation_date, :hidden, :nsfw, :upload_date)');
-                $statement->bindValue(':file_name', $file["name{$i}"]);
+                $statement->bindValue(':file_name', $file["name"]);
                 $statement->bindValue(':file_hash', $file_hash);
                 $statement->bindValue(':title', $_POST["title{$i}"]);
                 $statement->bindValue(':description', $_POST["description{$i}"]);
