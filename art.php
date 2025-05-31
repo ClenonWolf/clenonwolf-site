@@ -22,7 +22,7 @@
     <form method="get" action="art.php">
         <label for="files_per_page">Posts per page: </label>
         <select onchange="this.form.submit();" name="files_per_page">
-            <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 25) echo 'selected="selected"'; ?> value=25>25</option>
+            <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 25) echo 'selected="selected"' ?> value=25>25</option>
             <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 50) echo 'selected="selected"' ?> value=50>50</option>
             <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 100) echo 'selected="selected"' ?> value=100>100</option>
         </select>
@@ -42,9 +42,9 @@
         $file_count = count($files);
         $total_pages = ceil($file_count / $files_per_page);
         $slice_offset = ($page-1) * $files_per_page;
-        $pageselect_html = "<div class=pageselect>Page: $page | <a href='?page=1'>1</a> ";
+        $pageselect_html = "<div class=pageselect>Page: $page | <a href='?page=1&files_per_page=$files_per_page'>1</a> ";
         for ($i = 2; $i <= $total_pages; $i++) {
-            $pageselect_html .= "<a href='?page=$i'>$i</a> ";
+            $pageselect_html .= "<a href='?page=$i&files_per_page=$files_per_page'>$i</a> ";
         }
         $pageselect_html .= "</div>";
         echo $pageselect_html;
