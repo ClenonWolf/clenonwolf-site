@@ -23,18 +23,31 @@
       <?php
         $ignored = array('.', '..', '.svn', '.htaccess', '.directory', 'thumb');
         $dir = 'media/art';
-        $files = array();    
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $files_per_page = isset($_GET['files_per_page']) ? intval($_GET['files_per_page']) : 20;
+        $files = array();
         foreach (scandir($dir) as $file) {
             if (in_array($file, $ignored)) continue;
             $files[$file] = filemtime($dir . '/' . $file);
         }
         arsort($files);
+        $file_count = count($files);
+        $total_pages = ceil($file_count / $files_per_page);
+        $slice_offset = ($page-1) * $files_per_page;
+        $pageselect_html = "<div class=pageselect>Page: <a href='?page=1'>1</a> ";
+        for ($i = 2; $i <= $total_pages; $i++) {
+            $pageselect_html .= "<a href='?page=$i'>$i</a> ";
+        }
+        $pageselect_html .= "</div>";
+        echo $pageselect_html;
 
-        foreach($files as $file => $value)  {
+        $files_slice = array_slice($files, $slice_offset, $files_per_page);
+        foreach($files_slice as $file => $value)  {
             $thumb_path = "media/art/thumb/{$file}_thumb.jpg";
+            $file_path = "media/art/$file";
             if(!file_exists($thumb_path)) {
                 error_log($file);
-                $imagick = new Imagick(realpath("media/art/$file"));
+                $imagick = new Imagick(realpath("$file_path"));
                 $imagick->setbackgroundcolor('rgb(64, 64, 64)');
                 $imagick->setImageCompressionQuality(100);
                 $imagick->thumbnailImage(250,250, true, false);
@@ -42,9 +55,10 @@
                     throw new Exception("Could not put contents.");
                 }
             }
-            echo "<a style='padding:7px' target='_blank' href='media/art/$file'><img src='$thumb_path' width=10% ></a>";
+            echo "<a style='padding:7px' target='_blank' href='$file_path'><img src='$thumb_path' width=10% ></a>";
 
         }
+        echo $pageselect_html;
       ?>
     </div>
     </div>

@@ -137,6 +137,13 @@ img {
   background-color: #111;
 }
 
+.pageselect {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .imageContainer img {
   border: 1px solid #ddd;
   border-radius: 0.2em;
