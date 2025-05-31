@@ -19,12 +19,20 @@
     <h1>Art Dump :3</h1>
     <p>The lazy dump of the wolps art. Just a folder I can throw everything into.</p>
     <p>To view the full res image, simply click one and it'll open in a new tab.</p>
+    <form method="get" action="art.php">
+        <label for="files_per_page">Posts per page: </label>
+        <select onchange="this.form.submit();" name="files_per_page">
+            <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 25) echo 'selected="selected"'; ?> value=25>25</option>
+            <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 50) echo 'selected="selected"' ?> value=50>50</option>
+            <option <?php if (isset($_GET['files_per_page']) and intval($_GET['files_per_page']) === 100) echo 'selected="selected"' ?> value=100>100</option>
+        </select>
+    </form>
     <div class=imageContainer>
-      <?php
+    <?php
         $ignored = array('.', '..', '.svn', '.htaccess', '.directory', 'thumb');
         $dir = 'media/art';
         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-        $files_per_page = isset($_GET['files_per_page']) ? intval($_GET['files_per_page']) : 20;
+        $files_per_page = isset($_GET['files_per_page']) ? intval($_GET['files_per_page']) : 25;
         $files = array();
         foreach (scandir($dir) as $file) {
             if (in_array($file, $ignored)) continue;
@@ -34,7 +42,7 @@
         $file_count = count($files);
         $total_pages = ceil($file_count / $files_per_page);
         $slice_offset = ($page-1) * $files_per_page;
-        $pageselect_html = "<div class=pageselect>Page: <a href='?page=1'>1</a> ";
+        $pageselect_html = "<div class=pageselect>Page: $page | <a href='?page=1'>1</a> ";
         for ($i = 2; $i <= $total_pages; $i++) {
             $pageselect_html .= "<a href='?page=$i'>$i</a> ";
         }
