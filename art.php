@@ -42,6 +42,7 @@
         $file_count = count($files);
         $total_pages = ceil($file_count / $files_per_page);
         $slice_offset = ($page-1) * $files_per_page;
+        
         $pageselect_html = "<div class=pageselect>Page: $page | <a href='?page=1&files_per_page=$files_per_page'>1</a> ";
         for ($i = 2; $i <= $total_pages; $i++) {
             $pageselect_html .= "<a href='?page=$i&files_per_page=$files_per_page'>$i</a> ";
@@ -51,8 +52,8 @@
 
         $files_slice = array_slice($files, $slice_offset, $files_per_page);
         foreach($files_slice as $file => $value)  {
-            $thumb_path = "media/art/thumb/{$file}_thumb.jpg";
-            $file_path = "media/art/$file";
+            $thumb_path = "{$dir}/thumb/{$file}_thumb.jpg";
+            $file_path = "{$dir}/$file";
             if(!file_exists($thumb_path)) {
                 error_log($file);
                 $imagick = new Imagick(realpath("$file_path"));
