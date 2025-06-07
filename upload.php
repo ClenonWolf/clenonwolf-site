@@ -8,7 +8,7 @@ if($_COOKIE["token"] !== trim(file_get_contents("token.secret"))) {
 
 date_default_timezone_set('Europe/Berlin');
 $target_dir = "media/uploads/";
-$thumb_dir = "media/uploads/thumbs/";
+$thumb_dir = "$target_dir/thumbs/";
 
 $i = 0;
 foreach($_FILES as $file){
