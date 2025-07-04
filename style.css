@@ -160,7 +160,7 @@ a {
 }
 
 .image-container {
-  padding: 0.2em;
+  padding: 0.2em;y
   text-align: center;
   font-size: small;
 }
@@ -178,7 +178,18 @@ a {
 .image-container img:hover {
     box-shadow: 0 0 0.4em 0.2em rgba(170, 170, 255, 0.9);
   }
-  
+
+.imageContainer img {
+  border: 1px solid #ddd;
+  border-radius: 0.2em;
+  padding: 0.25em;
+  width: 10em;
+}
+
+.imageContainer img:hover {
+    box-shadow: 0 0 0.4em 0.2em rgba(170, 170, 255, 0.9);
+  }
+
 .snowflake {
   color: #fff;
   font-size: 1em;
