@@ -160,7 +160,7 @@ a {
 }
 
 .image-container {
-  padding: 0.2em;y
+  padding: 0.2em;
   text-align: center;
   font-size: small;
 }
@@ -183,7 +183,6 @@ a {
   border: 1px solid #ddd;
   border-radius: 0.2em;
   padding: 0.25em;
-  width: 10em;
 }
 
 .imageContainer img:hover {

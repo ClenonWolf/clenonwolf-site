@@ -15,7 +15,7 @@
     <label for="files_per_page">Or enter manually: </label>
     <input onchange="this.form.submit();" type="number" name="files_per_page" min="1">
 </form>
-<div class=imageContainer>
+<div class=images-container>
     <?php
         $ignored = array('.', '..', '.svn', '.htaccess', '.directory', 'thumb');
         $def_files_per_page = 50;
