@@ -161,8 +161,8 @@ a {
 
 .image-container {
   padding: 0.2em;
-  max-width: 20em;
   text-align: center;
+  font-size: small;
 }
 
 .image-container a img {

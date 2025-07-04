@@ -7,6 +7,5 @@
   <!-- <li><a href="/art_upload.php">Upload</a></li> -->
   <li><a href="https://findawolf.com">FindAWolf</a></li>
   <li><a href="https://bulk.findawolf.com">Bulk FindAWolf</a></li>
-  <li><a href="https://findafox.net">FindAFox</a></li>
 </ul>
 </div>

@@ -59,9 +59,7 @@
         foreach($files_slice as $file => $value)  {
             $thumb_path = "{$thumb_dir}/{$file}_thumb.jpg";
             $file_path = "{$dir}/$file";
-            $file_url = "https://bulk.findawolf.com/".str_replace(" ", "%2520", $file_path); //should be replaced with a doube urlencode but it didn't work as expected 
-            $flickr_id = strtok($file, "_");
-            $flickr_url = "https://flickr.com/photo.gne?id=$flickr_id";
+            $file_date = date("F d Y", filemtime($file_path));
             if(!file_exists($thumb_path)) {
                 error_log($file);
                 $imagick = new Imagick(realpath("$file_path"));
@@ -75,7 +73,7 @@
             echo "
             <div class='image-container'>
                 <a target='_blank' href='$file_path'><img src='$thumb_path'></a><br>
-                $file
+                $file<br>$file_date
             </div>
             ";
 
