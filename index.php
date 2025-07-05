@@ -31,11 +31,10 @@
         <p>Heya, I'm a silly wolf that likes to draw, do random IT/tech/electronics related stuff and has a bunch of hobbies that come and go like photography, music and more. Currently doing an apprenticeship as system integrator. I absolutely love wolves AND FOXES, so just your average furry here heh.</p>
         <p>This is just me goofing around with good old HTML, CSS, PHP and tiny bit of JS. Inspired by the early 2000s internet. Gifs from Internet Archives <a href="https://gifcities.org">GifCities</a>.</p>
         <p>This website really isn't compatible with a lot as I'm not doing things properly. So looks best on a 1080p screen as that's what I'm using :c Will try to improve soon though :p</p>
-        <p>If you want to follow this project and it's changes you can view it on it's <a href='https://github.com/ClenonWolf/clenonwolf-site'>GitHub repository</a> :p</p> 
-        <p>Enjoy! uwu</p>
-        <p>I know, I found out about rainbow borders and now can't stop using em. No need to tell me, I like em :3</p>
-        <p>In case you want to have a look at my original, honestly more finished page, it can be found under <a href="https://old.clenonwolf.com">old.clenonwolf.com</a></p>
+        <p>In case you want to have a look at my original it can be found under <a href="https://old.clenonwolf.com">old.clenonwolf.com</a></p>
         <p>No ChatGPT was used in the making of this website. Just googling, the help of friends and pain x3</p>
+        <p>Contact: <a href="mailto:contact@clenonwolf.com">contact@clenonwolf.com</a></p>
+        <p>Enjoy! uwu</p>
         <h3>Gemme pets :3</h3>
         <img src="media/gif/petpet.gif" class="img_30">
 	<h2>Current Temperature in my City:</h2>
