@@ -17,7 +17,7 @@ body {
     background: -webkit-linear-gradient(green, purple); /* #eee, #333) */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1vw;
+    font-size: 0.7vw;
     font-family: monospace;
     font-weight: bolder;
     white-space: pre;
