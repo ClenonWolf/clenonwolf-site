@@ -220,7 +220,7 @@ a {
     background: -webkit-linear-gradient(green, purple); /* #eee, #333) */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2vw;
+    font-size: 1.9vw;
     font-family: monospace;
     font-weight: bolder;
     white-space: pre;
