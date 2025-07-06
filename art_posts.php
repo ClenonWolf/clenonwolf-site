@@ -39,7 +39,7 @@
             <input <?php if (isset($_POST["nsfw_toggle"]) and $_POST["nsfw_toggle"]) echo 'checked' ?> onchange="this.form.submit();" type="checkbox" name="nsfw_toggle">Show NSFW (18+) Posts</input>
         </form>
         <br>
-        <div class=imageContainer>
+        <div class=images-container>
             <?php
             $order_options = array(
                 "id_desc"=>'id DESC',
@@ -60,7 +60,12 @@
             $results = $statement->execute();
             while ($row = $results->fetchArray()) {
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
-                echo "<a target='_self' style='padding:7px' target='_blank' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}' width=10% ></a>";
+                echo "
+                <div class='image-container'>
+                    <a target='_blank' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}'></a><br>
+                    {$row['title']}<br>{$row['creation_date']}
+                </div>
+                ";
             }
             ?>
         </div>
