@@ -62,7 +62,7 @@
                 $alt_text = "Title: {$row['title']}\nDesc: {$row['description']}\nCreated: {$row['creation_date']}\nUploaded: {$row['upload_date']}";
                 echo "
                 <div class='image-container'>
-                    <a target='_blank' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}'></a><br>
+                    <a target='_self' href='post_view.php?id={$row['id']}'><img title='{$alt_text}' src='media/uploads/thumbs/{$row['file_hash']}'></a><br>
                     {$row['title']}<br>{$row['creation_date']}
                 </div>
                 ";
